@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
 
 export default class WeatherContainer extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ export default class WeatherContainer extends Component {
   }
 
   state = {
-    weatherData: null,
+    weatherData: null
   };
 
   componentDidMount = () => {
@@ -18,16 +18,17 @@ export default class WeatherContainer extends Component {
   };
   getWeatherData() {
     axios
-      .get('http://api.openweathermap.org/data/2.5/weather', {
+      .get("https://api.openweathermap.org/data/2.5/weather", {
         params: {
-          q: 'Austin',
-          units: 'imperial',
-          appid: `${process.env.REACT_APP_WEATHER_API}`,
-        },
+          q: "austin,usa",
+          units: "imperial",
+          appid: `${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+        }
       })
-      .then((response) => {
+      .then(response => {
+        console.dir(response);
         this.updateWeatherData(response.data);
-      })
+      });
   }
 
   updateWeatherData(responseData) {
@@ -35,9 +36,14 @@ export default class WeatherContainer extends Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.state.weatherData) {
-      const { humidity, pressure, temp, temp_min, temp_max } = this.state.weatherData.main;
+      const {
+        humidity,
+        pressure,
+        temp,
+        temp_min,
+        temp_max
+      } = this.state.weatherData.main;
       return (
         <div>
           <h2>{this.state.weatherData.name}</h2>
@@ -56,9 +62,3 @@ export default class WeatherContainer extends Component {
       );
   }
 }
-
-WeatherContainer.propTypes = {
-  baseURL: PropTypes.string,
-  cityToQuery: PropTypes.string,
-  units: PropTypes.string,
-};
