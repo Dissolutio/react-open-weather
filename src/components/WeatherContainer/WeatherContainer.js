@@ -5,8 +5,6 @@ import axios from "axios";
 export default class WeatherContainer extends Component {
   constructor(props) {
     super(props);
-    this.getWeatherData = this.getWeatherData.bind(this);
-    this.updateWeatherData = this.updateWeatherData.bind(this);
   }
 
   state = {
@@ -14,19 +12,19 @@ export default class WeatherContainer extends Component {
   };
 
   componentDidMount = () => {
-    this.getWeatherData();
+    this.getWeatherData(this.props.weatherApiProps);
   };
-  getWeatherData() {
+  getWeatherData(weatherProps) {
+    const { baseURL, cityToQuery, units } = weatherProps;
     axios
-      .get("https://api.openweathermap.org/data/2.5/weather", {
+      .get(baseURL, {
         params: {
-          q: "austin,usa",
-          units: "imperial",
-          appid: `${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+          appid: `${process.env.REACT_APP_OPENWEATHER_API_KEY}`,
+          q: cityToQuery,
+          units
         }
       })
       .then(response => {
-        console.dir(response);
         this.updateWeatherData(response.data);
       });
   }
