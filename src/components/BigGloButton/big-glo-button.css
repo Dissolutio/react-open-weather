@@ -1,22 +1,17 @@
 @import url(https://fonts.googleapis.com/css?family=Audiowide);
 
-:root {
-  font-size: 10px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
+.glow-btn-background {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #eee;
+  background-color: transparent;
   padding: 1.5em;
   perspective: 100rem;
   transition: background-color 200ms;
+}
+.dark-bg {
+  background-color: #050505;
 }
 
 .glow-btn {

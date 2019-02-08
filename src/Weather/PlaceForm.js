@@ -6,7 +6,7 @@ import ZigZagInput from "./ZigZagInput";
 import AutoSuggestPlaces from "./AutoSuggestPlaces";
 import WeatherContainer from "./WeatherContainer";
 import ForecastContainer from "./ForecastContainer";
-import SubmitButton from "../components/SubmitButton/SubmitButton.js";
+import OrganicButton from "../components/OrganicButton/OrganicButton.js";
 
 class PlaceForm extends Component {
   constructor() {
@@ -90,7 +90,7 @@ class PlaceForm extends Component {
             autocompleteInputChange={this.autocompleteInputChange}
           />
           <ZigZagInput />
-          <SubmitButton />
+          <OrganicButton />
         </FormContainer>
         <WeatherContainer weatherData={this.state.weatherData} />
         <ForecastContainer forecastData={this.state.forecastData} />

@@ -1,38 +1,40 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import WeatherContainer from "./components/WeatherContainer/WeatherContainer";
-import PlaceForm from "./components/PlaceForm/PlaceForm";
+import styled from "styled-components";
+import PlaceForm from "./Weather/PlaceForm";
+import GlowCard from "./components/GlowCard/GlowCard";
+import BigGloButton from "./components/BigGloButton/BigGloButton";
 
-// note: weatherRoute.weatherProps is not really used, currently
-const weatherRoute = [
-  {
-    path: `/weather`,
-    Component: WeatherContainer,
-    weatherProps: {
-      baseURL: `Base URL monster`,
-      cityToQuery: `city to query baby!`,
-      units: `imperial please`
-    }
-  }
-];
+const AppWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 16px;
+  background: #abbaab;
+  background: linear-gradient(135deg, #ffffff, #abbaab);
+`;
+const BlackWrapper = styled.div`
+  background-color: #000;
+`;
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div className="App">
-          {weatherRoute.map(({ path, Component, weatherProps }) => (
-            <Route
-              key={path}
-              path={path}
-              render={props => (
-                <Component props={props} weatherProps={weatherProps} />
-              )}
-            />
-          ))}
-          <Route path="/" render={props => <PlaceForm props={props} />} />
-        </div>
-      </Router>
+      <>
+        <AppWrapper>
+          <PlaceForm />
+        </AppWrapper>
+        <BlackWrapper>
+          <GlowCard />
+        </BlackWrapper>
+        <BlackWrapper>
+          <BigGloButton />
+        </BlackWrapper>
+      </>
     );
   }
 }
