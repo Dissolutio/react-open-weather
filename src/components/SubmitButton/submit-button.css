@@ -1,0 +1,49 @@
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+
+:root {
+  font-size: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #eee;
+  padding: 1.5em;
+  perspective: 100rem;
+  transition: background-color 200ms;
+}
+
+.glow-btn {
+  font-family: "Audiowide", Arial, sans-serif;
+  font-size: calc(5rem + 2vw);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 80%;
+  height: 3em;
+  color: #222;
+  background-color: #bdbdbd;
+  outline: none;
+  border: none;
+  border-bottom: 0.12em solid #999;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transform: rotateX(20deg);
+  transition: border-bottom-width 500ms, transform 500ms, color 700ms 100ms,
+    background-color 700ms 100ms, border-bottom-color 700ms 100ms,
+    box-shadow 700ms 100ms;
+}
+
+.glow-btn-on {
+  color: #121212;
+  background-color: #3efa3e;
+  border-bottom: 0.05em solid #2aa82a;
+  box-shadow: 0 0 1.4em rgba(50, 205, 50, 0.35);
+  transform: rotateX(20deg) translateY(0.05em) scale(0.99);
+}
