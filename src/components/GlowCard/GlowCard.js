@@ -6,7 +6,7 @@ export default function GlowCardBlock() {
   return (
     <BlackWrapper>
       <GlowCardContainer>
-        <GlowCard>
+        <GlowCard glowCardWidth="80%">
           <GlowList />
         </GlowCard>
       </GlowCardContainer>
@@ -46,7 +46,7 @@ const GlowCard = styled.div`
   border-radius: 8px;
   position: relative;
   margin: 70px auto 0;
-  width: 50%;
+  width: ${props => props.glowCardWidth || "90%"};
   height: 400px;
   background-image: linear-gradient(-45deg, #000, #111);
   text-align: center;
