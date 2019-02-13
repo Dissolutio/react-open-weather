@@ -1,13 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Audiowide);
 
 .glow-btn-background {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
   height: 100vh;
   background-color: transparent;
   padding: 1.5em;
-  perspective: 100rem;
+  perspective: 400px;
   transition: background-color 200ms;
 }
 .dark-bg {
