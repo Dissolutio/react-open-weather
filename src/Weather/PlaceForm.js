@@ -38,8 +38,9 @@ class PlaceForm extends Component {
     axios
       .get(`${this.baseUrl("weather")}`, {
         params: {
-          lat,
-          lon: lon,
+          lat: `${lat}`,
+          lon: `${lon}`,
+          units: `imperial`,
           appid: `${process.env.REACT_APP_OPENWEATHER_API_KEY}`
         }
       })
