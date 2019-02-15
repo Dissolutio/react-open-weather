@@ -1,15 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
-export default function ZigZagInput() {
+export default function ZigZagInput({
+  htmlNameForInput,
+  inputLabelText,
+  inputValue
+}) {
   return (
-    <div className="section">
+    <>
       <InputContainer>
         <input
           className="text-input"
-          name="secondInput"
+          name={htmlNameForInput}
           type="text"
           placeholder=" "
+          value={inputValue}
         />
         <div className="clip-second-outer">
           <div className="fill-second">
@@ -30,10 +36,10 @@ export default function ZigZagInput() {
           </div>
         </div>
       </InputContainer>
-      <label className="zigzag-input-label" htmlFor="secondInput">
-        Get something else
+      <label className="zigzag-input-label" htmlFor={htmlNameForInput}>
+        {inputLabelText}
       </label>
-    </div>
+    </>
   );
 }
 const InputContainer = styled.div`
@@ -43,7 +49,7 @@ const InputContainer = styled.div`
       position: relative;
       top: 10px;
     }
-    .text-input {
+    input {
       background: transparent;
       border: 0;
       border-bottom: 2px solid black;
@@ -129,3 +135,11 @@ const InputContainer = styled.div`
     }
   }
 `;
+ZigZagInput.propTypes = {
+  htmlNameForInput: PropTypes.string.isRequired,
+  inputLabelText: PropTypes.string,
+  inputValue: PropTypes.string.isRequired
+};
+ZigZagInput.defaultProps = {
+  inputLabelText: ``
+};
