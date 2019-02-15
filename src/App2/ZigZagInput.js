@@ -6,18 +6,17 @@ export default function ZigZagInput({
   htmlNameForInput,
   inputLabelText,
   inputValue,
-  onInputChange
+  onTextInputChange
 }) {
   return (
     <>
       <InputContainer>
         <input
-          className="text-input"
           name={htmlNameForInput}
           type="text"
           placeholder={` `}
           value={inputValue}
-          onChange={onInputChange}
+          onChange={onTextInputChange}
         />
         <div className="clip-second-outer">
           <div className="fill-second">
@@ -38,29 +37,35 @@ export default function ZigZagInput({
           </div>
         </div>
       </InputContainer>
-      <label className="zigzag-input-label" htmlFor={htmlNameForInput}>
+      <ZigZagLabel className="zigzag-input-label" htmlFor={htmlNameForInput}>
         {inputLabelText}
-      </label>
+      </ZigZagLabel>
     </>
   );
 }
+const ZigZagLabel = styled.label`
+  position: relative;
+  top: 10px;
+  font-size: 1rem;
+`;
 const InputContainer = styled.div`
    {
     position: relative;
-    .zigzag-input-label {
-      position: relative;
-      top: 10px;
-    }
+    width: 100%;
+    max-width: 100px;
+    margin-top: 1rem;
     input {
       background: transparent;
       border: 0;
       border-bottom: 2px solid black;
-      font-size: 20px;
-      height: 50px;
-      outline: none !important;
-      width: 280px;
+      font-size: 1rem;
+      height: 2rem;
+      outline: none;
+      // subtract padding let/right, to line up with .clip width
+      width: calc(100% - 0.6rem);
       padding-bottom: 4px;
-      padding: 0 10px;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
       position: relative;
       z-index: 1;
     }
@@ -82,7 +87,7 @@ const InputContainer = styled.div`
     }
     .fill-second {
       transform: translateY(41px);
-      transition: transform 300ms;
+      transition: transform 400ms ease;
     }
     .fill-second-zigzag {
       background-repeat: repeat-x;
@@ -127,12 +132,12 @@ const InputContainer = styled.div`
       height: 50px;
       width: 100%;
     }
-    .text-input:focus ~ .clip-second-outer .fill-second,
-    .text-input:not(:placeholder-shown) ~ .clip-second-outer .fill-second {
+    input:focus ~ .clip-second-outer .fill-second,
+    input:not(:placeholder-shown) ~ .clip-second-outer .fill-second {
       transform: translateY(-32px);
     }
-    .text-input:focus ~ .clip-second-inner .fill-second,
-    .text-input:not(:placeholder-shown) ~ .clip-second-inner .fill-second {
+    input:focus ~ .clip-second-inner .fill-second,
+    input:not(:placeholder-shown) ~ .clip-second-inner .fill-second {
       transform: translateY(-32px);
     }
   }
@@ -140,7 +145,7 @@ const InputContainer = styled.div`
 ZigZagInput.propTypes = {
   htmlNameForInput: PropTypes.string.isRequired,
   inputValue: PropTypes.any.isRequired,
-  onInputChange: PropTypes.func.isRequired,
+  onTextInputChange: PropTypes.func.isRequired,
   inputLabelText: PropTypes.string,
   htmlIdForInput: PropTypes.string
 };

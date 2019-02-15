@@ -17,12 +17,12 @@ export default function BigGlo2({ onButtonClick, glowButtonOn }) {
 
 const GlowButton = styled.button`
   font-family: "Audiowide", Arial, sans-serif;
-  font-size: calc(5rem + 2vw);
+  font-size: 5rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   width: 80%;
-  height: 3em;
+  height: 10rem;
   color: #222;
   background-color: #bdbdbd;
   outline: none;
@@ -44,9 +44,8 @@ const GlowButtonBackground = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
   background-color: transparent;
-  padding: 1.5em;
+  padding: 1rem;
   perspective: 400px;
   transition: background-color 200ms;
 `;

@@ -1,7 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
 export default function WeatherContainer(props) {
   if (props.weatherData) {
+    console.log(props.weatherData);
+    const { name } = props.weatherData;
     const {
       humidity,
       pressure,
@@ -10,19 +13,19 @@ export default function WeatherContainer(props) {
       temp_max
     } = props.weatherData.main;
     return (
-      <div>
-        <h2>Weather Data!</h2>
+      <WeatherDiv>
+        <h2>Weather in {name}:</h2>
         <p>humidity {humidity}</p>
         <p>pressure {pressure}</p>
-        <p>temp {temp}</p>
+        <p>Current Temp: {temp}</p>
         <p>temp_max {temp_max}</p>
         <p>temp_min {temp_min}</p>
-      </div>
+      </WeatherDiv>
     );
-  } else
-    return (
-      <div>
-        <h1>Loading Weather</h1>
-      </div>
-    );
+  } else return null;
 }
+const WeatherDiv = styled.div`
+  font-family: "Press Start 2P", cursive;
+  font-size: 1rem;
+  color: #3efa3e;
+`;

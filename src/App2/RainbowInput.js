@@ -2,34 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 // TODO refactor css to be more styled-components minded
-export default (RainbowInput = ({
+export default function RainbowInput({
   htmlNameForInput,
   inputLabelText,
   inputValue,
   inputHtmlId,
-  onInputChange
-}) => {
+  onTextInputChange
+}) {
   return (
-    <>
+    <div>
       <InputContainer>
         <input
           id={inputHtmlId}
-          className="text-input"
           name={htmlNameForInput}
           type="text"
           placeholder={` `}
-          onChange={onInputChange}
+          onChange={onTextInputChange}
           value={inputValue}
         />
-        <animatedRainbow />
+        <AnimatedRainbow />
       </InputContainer>
-      <label className="rainbow-input-label" htmlFor={htmlNameForInput}>
+      <RainbowLabel className="rainbow-input-label" htmlFor={htmlNameForInput}>
         {inputLabelText}
-      </label>
-    </>
+      </RainbowLabel>
+    </div>
   );
-});
-const animatedRainbow = () => (
+}
+const AnimatedRainbow = () => (
   <>
     <div className="clip-outer clip">
       <div className="fill1 fill" />
@@ -57,24 +56,29 @@ const animatedRainbow = () => (
     </div>
   </>
 );
+const RainbowLabel = styled.label`
+  position: relative;
+  top: 10px;
+  font-size: 1rem;
+`;
 const InputContainer = styled.div`
    {
     position: relative;
     margin-top: 1.3rem;
-    .rainbow-input-label {
-      position: relative;
-      top: 10px;
-    }
-    .text-input {
+    width: 100%;
+    max-width: 300px;
+    input {
       background: transparent;
       border: 0;
       border-bottom: 2px solid black;
-      font-size: 20px;
-      height: 50px;
-      outline: none !important;
-      width: 280px;
+      font-size: 1rem;
+      height: 2rem;
+      outline: none;
+      // subtract padding let/right, to line up with .clip width
+      width: calc(100% - 0.6rem);
       padding-bottom: 4px;
-      padding: 0 10px;
+      padding-left: 0.3rem;
+      padding-right: 0.3rem;
       position: relative;
       z-index: 1;
     }
@@ -131,41 +135,41 @@ const InputContainer = styled.div`
     .fill1 {
       background: #000;
     }
-    .text-input:focus ~ .clip-outer,
-    .text-input:not(:placeholder-shown) ~ .clip-outer {
+    input:focus ~ .clip-outer,
+    input:not(:placeholder-shown) ~ .clip-outer {
       clip-path: ellipse(100% 350% at 50% 250%);
       transition: clip-path 500ms;
     }
-    .text-input:focus ~ .clip-inner,
-    .text-input:not(:placeholder-shown) ~ .clip-inner {
+    input:focus ~ .clip-inner,
+    input:not(:placeholder-shown) ~ .clip-inner {
       clip-path: ellipse(100% 350% at 50% 250%);
     }
-    .text-input:focus ~ .clip-inner1,
-    .text-input:not(:placeholder-shown) ~ .clip-inner1 {
+    input:focus ~ .clip-inner1,
+    input:not(:placeholder-shown) ~ .clip-inner1 {
       transition: clip-path 500ms 20ms;
     }
-    .text-input:focus ~ .clip-inner2,
-    .text-input:not(:placeholder-shown) ~ .clip-inner2 {
+    input:focus ~ .clip-inner2,
+    input:not(:placeholder-shown) ~ .clip-inner2 {
       transition: clip-path 500ms 40ms;
     }
-    .text-input:focus ~ .clip-inner3,
-    .text-input:not(:placeholder-shown) ~ .clip-inner3 {
+    input:focus ~ .clip-inner3,
+    input:not(:placeholder-shown) ~ .clip-inner3 {
       transition: clip-path 500ms 60ms;
     }
-    .text-input:focus ~ .clip-inner4,
-    .text-input:not(:placeholder-shown) ~ .clip-inner4 {
+    input:focus ~ .clip-inner4,
+    input:not(:placeholder-shown) ~ .clip-inner4 {
       transition: clip-path 500ms 80ms;
     }
-    .text-input:focus ~ .clip-inner5,
-    .text-input:not(:placeholder-shown) ~ .clip-inner5 {
+    input:focus ~ .clip-inner5,
+    input:not(:placeholder-shown) ~ .clip-inner5 {
       transition: clip-path 500ms 100ms;
     }
-    .text-input:focus ~ .clip-inner6,
-    .text-input:not(:placeholder-shown) ~ .clip-inner6 {
+    input:focus ~ .clip-inner6,
+    input:not(:placeholder-shown) ~ .clip-inner6 {
       transition: clip-path 500ms 120ms;
     }
-    .text-input:focus ~ .clip-inner7,
-    .text-input:not(:placeholder-shown) ~ .clip-inner7 {
+    input:focus ~ .clip-inner7,
+    input:not(:placeholder-shown) ~ .clip-inner7 {
       transition: clip-path 500ms 140ms;
     }
   }
