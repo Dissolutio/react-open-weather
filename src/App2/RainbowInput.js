@@ -7,7 +7,7 @@ export default (RainbowInput = ({
   inputLabelText,
   inputValue,
   inputHtmlId,
-  autocompleteInputChange
+  onInputChange
 }) => {
   return (
     <>
@@ -18,7 +18,7 @@ export default (RainbowInput = ({
           name={htmlNameForInput}
           type="text"
           placeholder={` `}
-          onChange={autocompleteInputChange}
+          onChange={onInputChange}
           value={inputValue}
         />
         <animatedRainbow />

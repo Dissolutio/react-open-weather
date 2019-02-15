@@ -99,11 +99,15 @@ class App2 extends Component {
             autocompleteCitySelected={this.autocompleteCitySelected}
           />
           <RainbowInput
-            autocompleteInputChange={this.autocompleteInputChange}
+            htmlNameForInput="lon"
+            inputLabelText="Longitude"
+            onInputChange={this.autocompleteInputChange}
+            inputValue={this.state.placeQuery}
           />
           <ZigZagInput
             htmlNameForInput="lon"
             inputLabelText="Longitude"
+            onInputChange={() => {}}
             inputValue={this.state.lon}
           />
           <ZigZagInput

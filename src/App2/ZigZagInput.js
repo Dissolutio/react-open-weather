@@ -17,6 +17,7 @@ export default function ZigZagInput({
           type="text"
           placeholder={` `}
           value={inputValue}
+          onChange={onInputChange}
         />
         <div className="clip-second-outer">
           <div className="fill-second">
