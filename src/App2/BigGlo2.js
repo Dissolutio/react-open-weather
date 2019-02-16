@@ -8,7 +8,7 @@ export default function BigGlo2({ onButtonClick, glowButtonOn }) {
       <GlowButton
         onClick={onButtonClick}
         type="submit"
-        className={`${glowButtonOn ? "glow-btn-on" : ""}`}>
+        className={glowButtonOn ? "glow-btn-on" : ""}>
         go
       </GlowButton>
     </GlowButtonBackground>
@@ -34,9 +34,6 @@ const GlowButton = styled.button`
   transition: border-bottom-width 500ms, transform 500ms, color 700ms 100ms,
     background-color 700ms 100ms, border-bottom-color 700ms 100ms,
     box-shadow 700ms 100ms;
-  &:.glow-btn-on {
-    color: red;
-  }
 `;
 const GlowButtonBackground = styled.div`
   box-sizing: border-box;
