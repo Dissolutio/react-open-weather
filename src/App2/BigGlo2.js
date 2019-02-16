@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import "./big-glo-button.css";
-
 export default function BigGlo2({ onButtonClick, glowButtonOn }) {
   return (
     <GlowButtonBackground>
       <GlowButton
         onClick={onButtonClick}
         type="submit"
-        className={`${glowButtonOn ? "glow-btn-on" : ""}`}>
+        glowButtonOn={glowButtonOn}>
         go
       </GlowButton>
     </GlowButtonBackground>
@@ -23,20 +21,20 @@ const GlowButton = styled.button`
   text-transform: uppercase;
   width: 80%;
   height: 10rem;
-  color: #222;
-  background-color: #bdbdbd;
   outline: none;
   border: none;
-  border-bottom: 0.12em solid #999;
   border-radius: 0.5em;
+  background-color: ${props => (props.glowButtonOn ? "#3efa3e" : "#bdbdbd")};
+  box-shadow: ${props =>
+    props.glowButtonOn ? "0 0 1.4em rgba(50, 205, 50, 0.35)" : ""};
+  border-bottom: ${props =>
+    props.glowButtonOn ? "0.05em solid #2aa82a" : "0.12em solid #999"};
+  color: ${props => (props.glowButtonOn ? "#121212" : "#222")};
   cursor: pointer;
   transform: rotateX(20deg);
   transition: border-bottom-width 500ms, transform 500ms, color 700ms 100ms,
     background-color 700ms 100ms, border-bottom-color 700ms 100ms,
     box-shadow 700ms 100ms;
-  &:.glow-btn-on {
-    color: red;
-  }
 `;
 const GlowButtonBackground = styled.div`
   box-sizing: border-box;

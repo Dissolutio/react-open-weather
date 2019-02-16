@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import axios from "axios";
 import RainbowInput from "./RainbowInput";
 import ZigZagInput from "./ZigZagInput";
@@ -8,6 +8,11 @@ import BigGlo2 from "./BigGlo2";
 import WeatherContainer from "./WeatherContainer";
 import ForecastContainer from "./ForecastContainer";
 
+const GlobalStyles = createGlobalStyle`
+  body {
+    @import url(https://fonts.googleapis.com/css?family=Audiowide);
+  }
+`;
 class App2 extends Component {
   constructor() {
     super();
@@ -106,6 +111,7 @@ class App2 extends Component {
   render() {
     return (
       <AppWrapper darkBG={this.state.glowButtonOn}>
+        <GlobalStyles />
         <FormContainer
           onSubmit={this.onSubmitFormContainer}
           darkBG={this.state.glowButtonOn}>
@@ -156,7 +162,7 @@ const AppWrapper = styled.div`
   margin: 0;
   padding: 0;
   font-size: 16px;
-  background: ${props => (props.darkBG ? "#222" : "#abbaab")};
+  background: ${props => (props.darkBG ? "#050505" : "#abbaab")};
   background: ${props =>
     props.darkBG ? "#222" : `linear-gradient(135deg, #ffffff, #abbaab)`};
   transition: background-color 300ms ease;
